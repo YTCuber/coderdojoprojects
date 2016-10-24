@@ -34,7 +34,7 @@
 			$c=explode("§§§§§",file_get_contents("projects.txt"));
 			for($i=0;$i<count($c);++$i){
 				$n=explode(",,",$c[$i]);
-				echo '<div class="row well"><div class="col-md-12"><h3><a href="desc.php?id=$i">';
+				echo '<div class="row well"><div class="col-md-12"><h3><a href="desc.php?id='.$i.'">';
 				echo $n[0];
 				echo '</a></h3><p>';
 				if(strlen($n[1])>2) echo '<span class="label label-primary">Github</span> ';

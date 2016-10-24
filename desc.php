@@ -21,33 +21,34 @@
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
-						<li class="active"><a href="#">List Projects</a></li>
+						<li class="active"><a href="index.php">List Projects</a></li>
 						<li><a href="new.php">Add Project</a></li>
 						</ul>
 					</div>
 				</div>
 			</nav>
 			
-			<h1>View all projects</h1>
+			<h1>View individual project</h1>
 
 			<?php
 			$id=$_GET['id'];
 			$c=explode("§§§§§",file_get_contents("projects.txt"));
 			for($i=0;$i<count($c);++$i){
-				if($i!=$id)break;
-				$n=explode(",,",$c[$i]);
-				echo '<div class="row well"><div class="col-md-12"><h3><a href="">';
-				echo $n[0];
-				echo '</a></h3><p>';
-				if(strlen($n[1])>2) echo '<span class="label label-primary"><a href="http://www.github.com/'.$n[1].'">Github</a></span> ';
-				echo '<span class="label label-info"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>'.$n[2].'</span> ';
-				echo '<span class="label label-default"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>'.$n[3].'h</span> ';
-				$x=explode(",",$n[5]);
-				for($j=0;$j<count($x);++$j){
-					echo '<span class="label label-success">'.$x[$j].'</span> ';
+				if($i==$id){
+					$n=explode(",,",$c[$i]);
+					echo '<div class="row well"><div class="col-md-12"><h3><a href="">';
+					echo $n[0];
+					echo '</a></h3><p>';
+					if(strlen($n[1])>2) echo '<span class="label label-primary"><a href="http://www.github.com/'.$n[1].'">Github</a></span> ';
+					echo '<span class="label label-info"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>'.$n[2].'</span> ';
+					echo '<span class="label label-default"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>'.$n[3].'h</span> ';
+					$x=explode(",",$n[5]);
+					for($j=0;$j<count($x);++$j){
+						echo '<span class="label label-success">'.$x[$j].'</span> ';
+					}
+					echo '<p><p>'.$n[6];
+					echo '</p></div></div>';
 				}
-				echo '<p><p>'.$n[6]." ...";
-				echo '</p></div></div>';
 			}
 			?>
 		</div>
